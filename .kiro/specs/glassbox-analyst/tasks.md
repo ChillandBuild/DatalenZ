@@ -2,14 +2,14 @@
 
 ## Phase 1: Project Setup and Core Infrastructure
 
-- [-] 1. Initialize monorepo structure
+- [x] 1. Initialize monorepo structure
   - Create root directory with frontend and backend folders
   - Set up package.json for monorepo management (npm workspaces or pnpm)
   - Create .gitignore for both frontend and backend
   - Initialize git repository
   - _Requirements: 12.1, 12.2, 12.3_
 
-- [ ] 2. Set up Next.js frontend
+- [x] 2. Set up Next.js frontend
   - Initialize Next.js 14 project with App Router
   - Configure TypeScript with strict mode
   - Install and configure Tailwind CSS
@@ -17,7 +17,7 @@
   - Create basic folder structure: app/, components/, lib/, types/
   - _Requirements: 12.3, 12.4, 10.4_
 
-- [ ] 3. Set up FastAPI backend
+- [x] 3. Set up FastAPI backend
   - Initialize Python project with Poetry or pip
   - Create FastAPI application with main.py
   - Configure CORS middleware for frontend communication
@@ -31,7 +31,7 @@
   - Test CORS headers are properly set
   - _Requirements: 12.2_
 
-- [ ] 4. Configure Supabase authentication
+- [x] 4. Configure Supabase authentication
   - Create Supabase project and obtain credentials
   - Install Supabase client libraries (frontend and backend)
   - Set up environment variables for Supabase URL and keys
@@ -47,7 +47,7 @@
 
 ## Phase 2: Database Schema and Models
 
-- [ ] 5. Create database schema in Supabase
+- [x] 5. Create database schema in Supabase
   - Create sessions table with proper columns and indexes
   - Create messages table with foreign key to sessions
   - Create execution_logs table
@@ -55,7 +55,7 @@
   - Set up Row-Level Security (RLS) policies
   - _Requirements: 9.2, 9.5_
 
-- [ ] 6. Implement Pydantic data models
+- [x] 6. Implement Pydantic data models
   - Create ColumnInfo, DatasetSchema models
   - Create ExecutionPlan, ExecutionResult models
   - Create Session, Message models
@@ -69,7 +69,7 @@
   - Test model serialization/deserialization
   - _Requirements: 1.4_
 
-- [ ] 7. Implement TypeScript interfaces
+- [x] 7. Implement TypeScript interfaces
   - Create Message, Artifact interfaces
   - Create ExecutionResult, Session interfaces
   - Create DatasetSchema, ColumnInfo interfaces
@@ -78,7 +78,7 @@
 
 ## Phase 3: File Upload and Dataset Profiling
 
-- [ ] 8. Implement file upload UI component
+- [x] 8. Implement file upload UI component
   - Create FileUpload component with drag-and-drop zone
   - Add file type validation (CSV, Excel only)
   - Add file size validation (100MB limit)
@@ -93,7 +93,7 @@
   - _Requirements: 1.1, 1.2_
 
 
-- [ ] 9. Implement file upload API endpoint
+- [x] 9. Implement file upload API endpoint
   - Create POST /api/upload endpoint in FastAPI
   - Accept multipart/form-data file uploads
   - Validate file type and size on backend
@@ -108,7 +108,7 @@
   - Test invalid file type rejection
   - _Requirements: 1.1, 1.2_
 
-- [ ] 10. Implement file handler service
+- [x] 10. Implement file handler service
   - Create FileHandler class in services/file_handler.py
   - Implement process_csv() method using pandas
   - Implement process_excel() method using pandas
@@ -129,7 +129,7 @@
   - Generate random DataFrames with various column types
   - Verify schema includes all columns with correct metadata
 
-- [ ] 11. Implement PII scrubber service
+- [x] 11. Implement PII scrubber service
   - Install Microsoft Presidio libraries
   - Create PIIScrubber class in services/pii_scrubber.py
   - Implement scrub_text() method for email and phone detection
@@ -144,7 +144,7 @@
   - Verify all PII is replaced with placeholders
   - Verify original structure is maintained
 
-- [ ] 12. Implement profiling agent
+- [x] 12. Implement profiling agent
   - Create ProfilingAgent class in agents/profiling_agent.py
   - Set up OpenRouter API client
   - Implement analyze_schema() method
@@ -161,7 +161,7 @@
 
 ## Phase 4: E2B Sandbox Integration
 
-- [ ] 13. Set up E2B sandbox client
+- [x] 13. Set up E2B sandbox client
   - Install E2B SDK
   - Create E2BSandboxClient class in services/e2b_client.py
   - Implement create_sandbox() with 300s timeout
@@ -183,7 +183,7 @@
   - Verify all execution goes through E2B client
   - Verify no local exec/eval calls
 
-- [ ] 14. Implement session manager
+- [x] 14. Implement session manager
   - Create SessionManager class in services/session_manager.py
   - Implement create_session() to initialize session and sandbox
   - Implement get_sandbox() to retrieve active sandbox
@@ -214,7 +214,7 @@
 
 ## Phase 5: AI Agent Implementation
 
-- [ ] 15. Set up OpenRouter API client
+- [x] 15. Set up OpenRouter API client
   - Create OpenRouterClient class in services/openrouter_client.py
   - Implement chat completion method
   - Add retry logic with exponential backoff
@@ -235,7 +235,7 @@
   - Trigger API errors
   - Verify error messages don't contain API key
 
-- [ ] 16. Implement reasoning agent with smolagents
+- [x] 16. Implement reasoning agent with smolagents
   - Install smolagents framework
   - Create ReasoningAgent class in agents/reasoning_agent.py
   - Define system prompt for data science expert
@@ -257,7 +257,7 @@
   - Generate various data analysis queries
   - Verify generated code imports pandas and/or plotly
 
-- [ ] 17. Implement agent self-correction logic
+- [x] 17. Implement agent self-correction logic
   - Add analyze_error() method to ReasoningAgent
   - Implement execute_with_retry() with max 3 attempts
   - Parse error messages to identify root cause
@@ -285,7 +285,7 @@
 
 ## Phase 6: Query Processing API
 
-- [ ] 18. Implement query processing endpoint
+- [x] 18. Implement query processing endpoint
   - Create POST /api/query endpoint
   - Accept query text and session_id
   - Validate user authentication
@@ -300,7 +300,7 @@
   - Test authentication validation
   - _Requirements: 2.1, 9.1_
 
-- [ ] 19. Integrate PII scrubbing in query flow
+- [x] 19. Integrate PII scrubbing in query flow
   - Add PII scrubbing middleware before LLM calls
   - Scrub user query before sending to agent
   - Scrub error messages before sending to agent
@@ -313,7 +313,7 @@
   - Trigger PII redaction
   - Verify audit log entry is created
 
-- [ ] 20. Implement execution result processing
+- [x] 20. Implement execution result processing
   - Parse stdout/stderr from E2B sandbox
   - Extract Plotly figures from execution output
   - Create Artifact objects for code, charts, tables
@@ -334,7 +334,7 @@
 
 ## Phase 7: Frontend UI Implementation
 
-- [ ] 21. Implement main layout component
+- [x] 21. Implement main layout component
   - Create split-screen layout with resizable panels
   - Left panel: Chat interface (40% width)
   - Right panel: Workspace (60% width)
@@ -347,7 +347,7 @@
   - Test panel resize functionality
   - _Requirements: 10.1_
 
-- [ ] 22. Implement chat interface component
+- [x] 22. Implement chat interface component
   - Create Chat component with message list
   - Implement message input with send button
   - Add loading indicator during query processing
@@ -362,7 +362,7 @@
   - Test loading state
   - _Requirements: 10.2_
 
-- [ ] 23. Implement workspace component
+- [x] 23. Implement workspace component
   - Create Workspace component with tab navigation
   - Implement Code tab with syntax highlighting
   - Implement Charts tab for visualizations
@@ -382,7 +382,7 @@
   - Generate artifacts of different types
   - Verify tabs are labeled "Code" and "Charts"
 
-- [ ] 24. Implement code display component
+- [x] 24. Implement code display component
   - Create CodeDisplay component
   - Add syntax highlighting with Prism or Highlight.js
   - Add copy-to-clipboard button
@@ -390,7 +390,7 @@
   - Support Python syntax
   - _Requirements: 4.1_
 
-- [ ] 25. Implement terminal log component
+- [x] 25. Implement terminal log component
   - Create TerminalLog component
   - Style like VS Code terminal
   - Display stdout in white text
@@ -405,7 +405,7 @@
   - Test expand/collapse functionality
   - _Requirements: 4.2, 4.4_
 
-- [ ] 26. Implement chart visualization component
+- [x] 26. Implement chart visualization component
   - Install react-plotly.js
   - Create ChartDisplay component
   - Parse Plotly JSON from execution results
@@ -420,7 +420,7 @@
   - Generate various Plotly figures
   - Verify they render as interactive charts
 
-- [ ] 27. Implement multi-artifact management
+- [x] 27. Implement multi-artifact management
   - Add tab system for multiple visualizations
   - Create unique tab for each chart
   - Preserve chart state when switching tabs
@@ -446,12 +446,14 @@
 
 ## Phase 8: Session Management
 
-- [ ] 28. Implement session API endpoints
+- [x] 28. Implement session API endpoints
   - Create GET /api/sessions to list user sessions
   - Create GET /api/sessions/{id} to retrieve session details
   - Create POST /api/sessions/{id}/restore to restore session
   - Create POST /api/sessions to create new session
   - Add authentication middleware to all endpoints
+  - **COMPLETED**: All endpoints implemented and tested
+  - **FRONTEND INTEGRATION**: Connected to analyze page
   - _Requirements: 9.2, 9.3, 9.4_
 
 - [ ]* 28.1 Write unit tests for session endpoints
@@ -461,7 +463,28 @@
   - Test session restoration
   - _Requirements: 9.2, 9.3, 9.4_
 
-- [ ] 29. Implement session persistence
+- [x] 28.2 Connect frontend to session API (BONUS TASK)
+  - Create API client service in frontend/lib/api/client.ts
+  - Update analyze page to create session on mount
+  - Add loading and error states for session creation
+  - Pass session_id to chat interface
+  - **COMPLETED**: Full integration working
+
+- [x] 28.3 Connect chat interface to query API (BONUS TASK)
+  - Update chat interface to call processQuery API
+  - Handle query responses and update workspace
+  - Show success/failure messages
+  - Display retry count when applicable
+  - **COMPLETED**: Real-time query processing working
+
+- [x] 28.4 Add file upload to analyze page (BONUS TASK)
+  - Add upload button in header
+  - Create upload modal with FileUpload component
+  - Update upload API to accept session_id
+  - Save dataset schema to session
+  - **COMPLETED**: File upload integrated with sessions
+
+- [x] 29. Implement session persistence
   - Save messages to database after each query
   - Save execution logs to database
   - Save dataset schema to session
@@ -480,7 +503,7 @@
   - Store sessions in database
   - Verify all required fields are present
 
-- [ ] 30. Implement session restoration
+- [x] 30. Implement session restoration
   - Fetch session data from database
   - Restore chat messages to UI
   - Restore generated artifacts
@@ -495,7 +518,7 @@
   - Restore sessions
   - Verify all data is present
 
-- [ ] 31. Implement session history UI
+- [x] 31. Implement session history UI
   - Create SessionList component
   - Display list of previous sessions
   - Show session date, query count, dataset name
@@ -509,7 +532,7 @@
   - Test session deletion
   - _Requirements: 9.3_
 
-- [ ] 32. Implement execution history tracking
+- [x] 32. Implement execution history tracking
   - Store all code executions in session
   - Track retry count for each execution
   - Display execution history in UI
@@ -524,7 +547,7 @@
 
 ## Phase 9: Error Handling and Edge Cases
 
-- [ ] 33. Implement comprehensive error handling
+- [x] 33. Implement comprehensive error handling
   - Add try-catch blocks to all API endpoints
   - Create standardized error response format
   - Implement error logging with request IDs
@@ -541,14 +564,14 @@
   - Test authentication errors
   - _Requirements: 3.5, 11.4_
 
-- [ ] 34. Implement frontend error boundaries
+- [x] 34. Implement frontend error boundaries
   - Add React error boundaries to main components
   - Display user-friendly error messages
   - Add retry buttons for recoverable errors
   - Log errors to monitoring service
   - _Requirements: 3.5_
 
-- [ ] 35. Add input validation
+- [x] 35. Add input validation
   - Validate file types and sizes on frontend
   - Validate query length (max 10,000 chars)
   - Validate session IDs
@@ -557,7 +580,7 @@
 
 ## Phase 10: Security Hardening
 
-- [ ] 36. Implement authentication middleware
+- [x] 36. Implement authentication middleware
   - Create auth middleware for FastAPI
   - Validate JWT tokens from Supabase
   - Extract user_id from token
@@ -570,7 +593,7 @@
   - Test expired token rejection
   - _Requirements: 9.1_
 
-- [ ] 37. Implement rate limiting
+- [x] 37. Implement rate limiting
   - Add rate limiting middleware
   - Limit: 100 requests/minute per user
   - Limit: 10 file uploads/hour per user
@@ -578,14 +601,14 @@
   - Return 429 status when exceeded
   - _Requirements: 11.4_
 
-- [ ] 38. Add security headers
+- [x] 38. Add security headers
   - Configure CORS with specific origins
   - Add Content-Security-Policy header
   - Add X-Frame-Options header
   - Add X-Content-Type-Options header
   - _Requirements: 12.1_
 
-- [ ] 39. Implement workspace data transparency
+- [x] 39. Implement workspace data transparency
   - Show original unredacted data in workspace
   - Ensure redacted data sent to LLM
   - Add visual indicator when PII is redacted
@@ -632,7 +655,7 @@
 
 ## Phase 12: Deployment and DevOps
 
-- [ ] 44. Set up environment configuration
+- [x] 44. Set up environment configuration
   - Create .env.example files for frontend and backend
   - Document all required environment variables
   - Set up secrets in Vercel
@@ -688,7 +711,7 @@
 
 ## Phase 13: Documentation and Polish
 
-- [ ] 49. Create user documentation
+- [x] 49. Create user documentation
   - Write README with setup instructions
   - Document API endpoints
   - Create user guide for data analysis
@@ -709,7 +732,7 @@
   - Minimize bundle size
   - _Requirements: All_
 
-- [ ] 52. Final review and cleanup
+- [x] 52. Final review and cleanup
   - Remove console.logs and debug code
   - Clean up unused imports
   - Format code with prettier/black

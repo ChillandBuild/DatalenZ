@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "frontend",
-    "backend"
+    "frontend"
   ],
   "scripts": {
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm run dev",
-    "dev:backend": "cd backend && uvicorn main:app --reload",
+    "dev:backend": "cd backend && source venv/bin/activate && python3 main.py",
     "build": "npm run build:frontend",
     "build:frontend": "cd frontend && npm run build"
   },
