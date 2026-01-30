@@ -41,28 +41,30 @@ class SandboxService:
         if not self.sandbox:
             raise RuntimeError("Sandbox not started")
 
+        import time
+        start_time = time.time()
         execution = self.sandbox.run_code(code)
+        execution_time = time.time() - start_time
         
         # Parse results
-        results = []
+        artifacts = []
         for result in execution.results:
             if result.png:
-                results.append({"type": "image", "content": result.png})
+                artifacts.append({"type": "image/png", "content": result.png})
             elif result.jpeg:
-                results.append({"type": "image", "content": result.jpeg})
+                artifacts.append({"type": "image/jpeg", "content": result.jpeg})
             elif result.text:
-                results.append({"type": "text", "content": result.text})
-            # Handle other formats (pdf, html, etc.) if needed via result attributes or extra dict
+                artifacts.append({"type": "text/plain", "content": result.text})
 
-        logs = []
-        for log in execution.logs.stdout:
-            logs.append({"type": "stdout", "content": log})
-        for log in execution.logs.stderr:
-            logs.append({"type": "stderr", "content": log})
+        stdout = "\n".join(execution.logs.stdout)
+        stderr = "\n".join(execution.logs.stderr)
 
         return {
-            "results": results,
-            "logs": logs,
+            "success": execution.error is None,
+            "stdout": stdout,
+            "stderr": stderr,
+            "artifacts": artifacts,
+            "execution_time": execution_time,
             "error": execution.error
         }
 
